@@ -40,10 +40,10 @@ function checkLine(line: string): void {
   if (line.trim().length === 0) {
     throw new Error("roast must not be only whitespace");
   }
-  if (line.includes("\n") || line.includes("\r")) {
+  if (line.includes("\n") || line.includes("\r") || line.includes("\t")) {
     throw new Error("roast must be a single line");
   }
-  if (/[\u0000-\u001f\u007f]/.test(line)) {
+  if (/[\u0000-\u001f\u007f-\u009f]/.test(line)) {
     throw new Error("roast must not contain control characters");
   }
   if (line !== line.trim()) {
